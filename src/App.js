@@ -2,12 +2,15 @@
 import './App.css';
 import { useState } from 'react';
 import data from './data/data.js';
-import {Routes, Route, Link} from 'react-router-dom';
-import defaultImg from './img/default-img.jpg';
+import {Routes, Route, Link, useNavigate} from 'react-router-dom';
+
+import Detail from './pages/Detail.js';
+import Item from './components/Item.js'
 
 function App() {
 
   let [items] = useState(data);
+  let navigate = useNavigate();
 
   return (
     <div className="App">
@@ -15,9 +18,7 @@ function App() {
         <Route path="/" element = {
           <>
           <div className="navbar">
-            <Link to="/">
-              <div className="logo">당근 마켓, 애플 시세 검색기</div>
-            </Link>
+            <div className="logo" onClick={() => {navigate('/')}}>당근 마켓, 애플 시세 검색기</div>
           </div>
       
           <div className="list">
@@ -32,29 +33,24 @@ function App() {
           </>
         } />
 
-        <Route path="/detail" element= {
-          <div>상세페이지</div>
+        <Route path="/detail/:id" element= {
+          <Detail items={items} />
         } />
         <Route />
+
+        <Route path="*" element
+        ={
+          <div className="page-not-found">
+            <div className="notice">
+              <span className='h1'>404</span>
+              <span className='description'>안타깝게도<br></br>페이지를 찾을 수 없어요..</span>
+            </div>
+          </div>
+        }></Route>
 
       </Routes>
     </div>
   );
-}
-
-function Item(props) {
-  return (
-    <div className="item" key={props.item.article_id}>
-      <Link to='' style={{textDecoration:'none'}}>
-        <img className="item-img" src={defaultImg} />
-        <div className="title">{props.item.title}</div>
-        <div className="written-date">{props.item.written_date}</div>
-        <div className="price">{props.item.price}</div>
-        <div className="content">{props.item.content}</div>
-      </Link>
-    </div>
-    
-  )
 }
 
 export default App;
