@@ -2,37 +2,108 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 16px;
+  background-color: black;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: lightgray;
+  margin-right: 32px;
+}
+
+.links {
+  display: inline-flex;
+  flex: 1;
+  width: 100%
+}
+
+.link {
+  font-size: 16px;
   color: white;
+  margin-right: 16px;
+  cursor: pointer;
+  transition: all .3s;
 }
 
-.App-link {
-  color: #61dafb;
+.link:hover {
+  color: yellow;
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-bg {
+  display: flex;
+  width: 100%;
+  height: 350px;
+  /* height: 500px; */
+  /* max-height: 500px; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.list {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  /* width: 100%; */
+  padding: 32px;
+}
+
+.item {
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 200px;
+  text-align: left;
+  /* height: 100%; */
+}
+/* .item:not(:last-child) {
+  margin-right: 40px;
+} */
+
+Link {
+  text-decoration: none;
+}
+
+.item .item-img {
+  display: inline-flex;
+  width: 200px;
+  min-height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 16px;
+}
+
+.item .title {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.item .written-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: lightgray;
+  margin-bottom: 4px;
+}
+
+.item .price {
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+}
+
+.item .content {
+  color: #505050;
+  font-size: 14px;
+  margin-top: 12px;
 }
