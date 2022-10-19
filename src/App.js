@@ -2,7 +2,7 @@
 import './App.css';
 import { useState } from 'react';
 import data from './data/data.js';
-import {Routes, Route, Link, useNavigate} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 import Detail from './pages/Detail.js';
 import Item from './components/Item.js'
@@ -20,12 +20,11 @@ function App() {
           <div className="navbar">
             <div className="logo" onClick={() => {navigate('/')}}>당근 마켓, 애플 시세 검색기</div>
           </div>
-      
           <div className="list">
             {
-              items.map( (item, idx) => {
+              items.map( (item) => {
                 return (
-                  <Item item={item} idx={idx}> </Item>
+                  <Item item={item} key={item.article_id}> </Item>
                 )
               })
             }

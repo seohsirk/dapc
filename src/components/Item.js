@@ -6,7 +6,7 @@ function Item(props) {
   let url = ('./detail/' + props.item.article_id).toString()
 
   return (
-    <div onClick={() => {navigate(url)}} className="item" key={props.item.article_id}>
+    <div onClick={() => {navigate(url)}} className="item">
       <img className="item-img" src={defaultImg} />
       <div className="title">{props.item.title}</div>
       <div className="written-date">
