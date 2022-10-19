@@ -22,15 +22,21 @@ function App() {
           <div className="navbar">
             <div className="logo" onClick={() => {navigate('/')}}>당근 마켓, 애플 시세 검색기</div>
           </div>
-          <div className="list">
-            {
-              items.map( (item) => {
-                return (
-                  <Item item={item} key={item.article_id}> </Item>
-                )
-              })
-            }
+          <div className='content-wrapper'>
+            <div className='chart'>
+              시세 그래프 영역이에요.
+            </div>
+            <div className="list">
+              {
+                items.map( (item) => {
+                  return (
+                    <Item item={item} key={item.article_id}> </Item>
+                  )
+                })
+              }
+            </div>
           </div>
+          
           <button onClick={()=>{
             // 로딩중UI 띄우기~
             axios.get('https://codingapple1.github.io/shop/data2.json')
@@ -40,9 +46,14 @@ function App() {
               // 로딩중UI 숨기기~
             })
             .catch(()=>{
-              console.log('Fail!')
+              console.log('데이터를 가져오는데 실패했습니다.')
               // 로딩중UI 숨기기~
             })
+
+            // Promise.all([axios.get('url1'), axios.get('/url2')])
+            // .then(()=>{})
+
+
           }}>더보기</button>
           </>
         } />
