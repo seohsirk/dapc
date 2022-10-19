@@ -1,8 +1,18 @@
 .App {
+  width: 100%;
   text-align: center;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .navbar {
@@ -11,6 +21,7 @@
   padding: 24px 32px;
   background-color: black;
   text-decoration: none;
+  width: 100%;
 }
 
 .logo {
@@ -36,19 +47,6 @@
   width: 100%
 }
 
-.link {
-  font-size: 16px;
-  color: white;
-  margin-right: 16px;
-  cursor: pointer;
-  transition: all .3s;
-}
-
-.link:hover {
-  color: yellow;
-  text-decoration: underline;
-}
-
 .main-bg {
   display: flex;
   width: 100%;
@@ -60,30 +58,33 @@
   background-repeat: no-repeat;
 }
 
-.list {
-  display: inline-flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+.App .content-wrapper {
+  display: flex;
+  flex: 1;
   flex-wrap: wrap;
-  /* gap: 24px; */
-  max-width: 1000px;
+}
+
+.chart {
+  display: inline-flex;
+  flex: 3;
+  min-width: 260px;
   padding: 32px;
 }
 
-.link {
-  text-decoration: none;
-  overflow: hidden;
-  /* white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical; */
+.list {
+  display: inline-flex;
+  flex: 7;
+  /* min-width: 240px; */
+  padding: 32px;
+  flex-wrap: wrap;
+  
 }
 
 .item {
   display: inline-flex;
   flex-direction: column;
-  /* align-items: center; */
-  width: 200px;
+  min-width: 250px;
+  max-width: 300px;
   padding: 12px;
   text-align: left;
   transition: all .35s;
@@ -92,7 +93,6 @@
 }
 
 .item:hover {
-  /* background-color: #F7F8F9; */
   background-color: #eef0f2;
 }
 
@@ -101,8 +101,6 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 150px;
-  max-height: 150px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -159,18 +157,17 @@
   display: inline-flex;
   justify-content: center;
   flex: 1;
-  /* width: 100%; */
   margin-top: 40px;
   position: relative;
   padding: 32px 15% 0 15%;
-  overflow: hidden;
 }
 
 .detail .btn-back {
   position: absolute;
-  left: 0;
-  width: 48px;
-  height: 48px;
+  left: 14px;
+  top: 35px;
+  width: 32px;
+  height: 32px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -187,18 +184,17 @@
 }
 
 .detail .content-wrapper {
+  display: inline-flex;
+  flex-direction: column;
   padding: 6px 15% 80px 15%;
 }
 
 .detail .header .title {
   display: inline-flex;
-  justify-content: center;
-  /* flex: 1; */
   width: 100%;
   color: black;
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 12px;
   text-align: left;
 }
 

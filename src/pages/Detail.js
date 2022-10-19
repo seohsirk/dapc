@@ -11,16 +11,24 @@ function Detail(props) {
     return x.article_id == id
   })
 
+  // 열릴때 fade 효과
+  let [fade, setFade] = useState('');
+  useEffect(() => {
+    let a = setTimeout(()=> { setFade('show') }, 10);
+    return () => {
+      clearTimeout(a);
+      setFade('');
+    }
+  }, [])
 
   return (
-    <div className='detail'>
+    <div className={`detail hide ${fade}`}>
       <div className="header">
-        <img className='btn-back' onClick={() => {navigate(-1)}} src={back} />
-        <div className='title'>
-          {item.title}
+          <img className='btn-back' onClick={() => {navigate(-1)}} src={back} />
+          <div className='title'>
+            {item.title}
+          </div>
         </div>
-      </div>
-      
       <div className='content-wrapper'>
         <div className='written-date'>
           <span>{item.written_date}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>{item.region}</span>
