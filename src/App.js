@@ -3,17 +3,19 @@ import './App.css';
 import { useState } from 'react';
 import data from './data/data.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 import Detail from './pages/Detail.js';
 import Item from './components/Item.js'
 
 function App() {
 
-  let [items] = useState(data);
+  let [items, setItems] = useState(data);
   let navigate = useNavigate();
 
   return (
     <div className="App">
+
       <Routes>
         <Route path="/" element = {
           <>
@@ -29,6 +31,19 @@ function App() {
               })
             }
           </div>
+          <button onClick={()=>{
+            // 로딩중UI 띄우기~
+            axios.get('https://codingapple1.github.io/shop/data2.json')
+            .then((result)=>{ 
+              let copy = [...items, ...result.data];
+              setItems(copy);
+              // 로딩중UI 숨기기~
+            })
+            .catch(()=>{
+              console.log('Fail!')
+              // 로딩중UI 숨기기~
+            })
+          }}>더보기</button>
           </>
         } />
 
