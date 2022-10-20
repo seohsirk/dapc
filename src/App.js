@@ -6,6 +6,8 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 import Detail from './pages/Detail.js';
+import Report from './pages/Report.js';
+
 import Item from './components/Item.js'
 
 function App() {
@@ -60,6 +62,11 @@ function App() {
 
         <Route path="/detail/:id" element= {
           <Detail items={items} />
+        } />
+        <Route />
+
+        <Route path="/report" element= {
+          <Report items={items} />
         } />
         <Route />
 

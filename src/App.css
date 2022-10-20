@@ -246,3 +246,21 @@
   font-size: 80px;
   font-weight: 900;
 }
+
+/* ///////// */
+
+.report table {
+  display: inline-block;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+.report tr {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+.report td {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
