@@ -1,4 +1,11 @@
-function Report(props) {
+import { useSelector } from 'react-redux';
+
+function Report() {
+
+  let item = useSelector((state) => {
+    return state.item;
+  })
+
   return (
     <div className='report'>
       <table>
@@ -10,12 +17,25 @@ function Report(props) {
           </tr>
         </thead>
         <tbody>
-
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
+          {
+            // item.map( (e, i) => {
+            //   return (
+            //     <tr>
+            //       <td>{e.article_id}</td>
+            //       <td>{e.title}</td>
+            //       <td>{e.price}</td>
+            //     </tr>
+            //   )    
+            // })
+            item.filter( e => e.title.length > 20).map( e => 
+            <tr key={e.article_id}>
+              <td>{e.article_id}</td>
+              <td>{e.title}</td>
+              <td>{e.price}</td>
+            </tr>
+            )
+          }
+          
         </tbody>
       </table>
     </div>
