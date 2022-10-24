@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import data from './data/data.js';
+// import data from './data/data.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,10 +9,13 @@ import Detail from './pages/Detail.js';
 import Report from './pages/Report.js';
 
 import Item from './components/Item.js'
+import { useSelector } from 'react-redux';
+
 
 function App() {
+  let item = useSelector((state) => state.item)
 
-  let [items, setItems] = useState(data);
+  let [items, setItems] = useState(item);
   let navigate = useNavigate();
 
   return (
