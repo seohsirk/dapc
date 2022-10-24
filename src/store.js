@@ -6,14 +6,13 @@ let item = createSlice({
   name : 'item',
   initialState : data,
   reducers: {
-    changeTitle(state) {
-      return console.log(state.title);
+    increase(state, action) {
+      state.find( e => e.article_id === action.payload).title = 'unknown'
     }
   }
 });
 
-
-
+export let { changeTitle, increase } = item.actions;
 
 export default configureStore({
   reducer: { 
