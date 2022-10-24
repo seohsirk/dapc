@@ -19,7 +19,7 @@ function Detail(props) {
       clearTimeout(a);
       setFade('');
     }
-  }, [])
+  }, []);
 
   return (
     <div className={`detail hide ${fade}`}>
