@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTitle, increase } from "./../store.js";
+import { increase } from "./../store.js";
 
 function Report() {
-
   let item = useSelector((state) => {
     return state.item;
   });
@@ -36,12 +35,10 @@ function Report() {
             </tr>
             )
           }
-          
         </tbody>
       </table>
     </div>
   )
-  
 }
 
 export default Report;
