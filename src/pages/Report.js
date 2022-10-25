@@ -1,4 +1,9 @@
+import { useSelector } from 'react-redux'
+
 function Report(props) {
+
+  let state = useSelector((state)=>{return state});
+  console.log(state.item)
   return (
     <div className='report'>
       <table>
@@ -10,12 +15,15 @@ function Report(props) {
           </tr>
         </thead>
         <tbody>
-
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
+          {
+            state.item.map((e, i)=>
+              <tr key={e.article_id}>
+                <td>3</td>
+                <td>{e.article_id}</td>
+                <td>{e.price}</td>
+              </tr>
+            )
+          }
         </tbody>
       </table>
     </div>
