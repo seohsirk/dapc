@@ -1,11 +1,15 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { increase } from "./../store.js";
 
-function Report(props) {
+function Report() {
+  let item = useSelector((state) => {
+    return state.item;
+  });
+  let dispatch = useDispatch();
 
-  let state = useSelector((state)=>{return state});
-  console.log(state.item)
   return (
     <div className='report'>
+
       <table>
         <thead>
           <tr>
@@ -16,19 +20,25 @@ function Report(props) {
         </thead>
         <tbody>
           {
-            state.item.map((e, i)=>
-              <tr key={e.article_id}>
-                <td>3</td>
-                <td>{e.article_id}</td>
-                <td>{e.price}</td>
-              </tr>
+            item.map( e => 
+            <tr key={e.article_id}>
+              <td>{e.article_id}</td>
+              <td>{e.title}</td>
+              <td>{e.price}</td>
+              <td>
+                <button onClick={() => {
+                  dispatch(increase(e.article_id))
+                }}>
+                  +
+                </button>
+              </td>
+            </tr>
             )
           }
         </tbody>
       </table>
     </div>
   )
-  
 }
 
 export default Report;

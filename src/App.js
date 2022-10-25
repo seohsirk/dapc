@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-import data from './data/data.js';
+import { useEffect, useState } from 'react';
+// import data from './data/data.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,15 +9,24 @@ import Detail from './pages/Detail.js';
 import Report from './pages/Report.js';
 
 import Item from './components/Item.js'
+import { useSelector } from 'react-redux';
+
 
 function App() {
+  let item = useSelector((state) => state.item)
 
-  let [items, setItems] = useState(data);
+  let [items, setItems] = useState(item);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify( [] ))
+  }, [])
+  // 사용자가 derail 페이지에 접속하면
+  // 그 페이지에 보이는 상품 id 가져와서 
+  // LocalStorage에 watched 항목에 추가
 
   return (
     <div className="App">
-
       <Routes>
         <Route path="/" element = {
           <>
@@ -57,6 +66,15 @@ function App() {
 
 
           }}>더보기</button>
+
+          <h2>최근 본 상품</h2>
+          <div className="list">
+            {
+              items.map( () => {
+                return
+              })
+            }
+          </div>
           </>
         } />
 
