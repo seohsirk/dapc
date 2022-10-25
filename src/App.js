@@ -14,16 +14,21 @@ import { useSelector } from 'react-redux';
 
 function App() {
   let item = useSelector((state) => state.item)
-
   let [items, setItems] = useState(item);
   let navigate = useNavigate();
 
+  let watched = localStorage.getItem('watched')
+  watched = JSON.parse(watched);
+  // console.log(watched)
+  // let [watched, setWatched] = useState(localStorage.getItem('watched'));
+
   useEffect(() => {
-    localStorage.setItem('watched', JSON.stringify( [] ))
+    if (localStorage.getItem('watched')) {
+      return
+    } else {
+      localStorage.setItem('watched', JSON.stringify( [] ))
+    }
   }, [])
-  // 사용자가 derail 페이지에 접속하면
-  // 그 페이지에 보이는 상품 id 가져와서 
-  // LocalStorage에 watched 항목에 추가
 
   return (
     <div className="App">
@@ -51,7 +56,7 @@ function App() {
           <button onClick={()=>{
             // 로딩중UI 띄우기~
             axios.get('https://codingapple1.github.io/shop/data2.json')
-            .then((result)=>{ 
+            .then((result) => { 
               let copy = [...items, ...result.data];
               setItems(copy);
               // 로딩중UI 숨기기~
@@ -69,10 +74,18 @@ function App() {
 
           <h2>최근 본 상품</h2>
           <div className="list">
-            {
-              items.map( () => {
-                return
-              })
+            { 
+              watched ? watched.map( (id) => {
+                let i = items.find((x) => {
+                  return x.article_id == id
+                });
+                return (
+                  // 로컬스토리의 id를 받고
+                  // 받은 id를 items의 article_id와 같은 해당 item을 찾아서 반환한다
+                  // 반환받은 해당 item을 <Item/> 에 집어 넣는다
+                  <Item item={i} key={i.article_id}> </Item>
+                )
+              }) : null
             }
           </div>
           </>

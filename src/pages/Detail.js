@@ -10,6 +10,14 @@ function Detail(props) {
   let item = props.items.find((x) => {
     return x.article_id == id
   })
+  useEffect(() => {
+    let watched = localStorage.getItem('watched')
+    watched = JSON.parse(watched);
+    watched.push(id);
+    watched = new Set(watched);
+    watched = Array.from(watched);
+    localStorage.setItem('watched', JSON.stringify(watched))
+  }, []);
 
   // 열릴때 fade 효과
   let [fade, setFade] = useState('');
