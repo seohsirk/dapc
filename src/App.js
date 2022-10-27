@@ -8,12 +8,8 @@ import { useSelector } from 'react-redux';
 
 import Item from './components/Item.js';
 
-
 const Detail = lazy(() => import('./pages/Detail.js'));
 const Report = lazy(() => import('./pages/Report.js'));
-
-// const Item = lazy(() => import('./components/Item.js'));
-
 
 
 function App() {
