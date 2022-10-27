@@ -19,7 +19,8 @@ function App() {
   let watched = localStorage.getItem('watched')
   watched = JSON.parse(watched);
 
-  let [isPending, startTransition] = useTransition(); // 자동완성 결과 보여줄 때  성능 향상을 위해 startTransition으로 해당 state 코드를 감싸줌. isPending 로딩중일때 보여줄 문구등
+  // let [isPending, startTransition] = useTransition(); 
+  // 자동완성 결과 보여줄 때  성능 향상을 위해 startTransition으로 해당 state 코드를 감싸줌. isPending 로딩중일때 보여줄 문구등
 
   useEffect(() => {
     if (localStorage.getItem('watched')) {
