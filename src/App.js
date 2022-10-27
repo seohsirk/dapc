@@ -6,6 +6,7 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
+import Pagination from "./components/Pagination";
 import Item from './components/Item.js';
 
 const Detail = lazy(() => import('./pages/Detail.js'));
@@ -15,6 +16,7 @@ const Report = lazy(() => import('./pages/Report.js'));
 function App() {
   let item = useSelector((state) => state.item)
   let [items, setItems] = useState(item);
+  // let [items, setItems] = useState([]);
   let navigate = useNavigate();
   let watched = localStorage.getItem('watched')
   watched = JSON.parse(watched);
@@ -56,8 +58,8 @@ function App() {
             
             <button onClick={()=>{
               // 로딩중UI 띄우기~
-              axios.get('https://codingapple1.github.io/shop/data2.json')
-              .then((result) => { 
+              axios.get('https://codingapple1.github.io/shop/data3.json')
+              .then((result) => {
                 let copy = [...items, ...result.data];
                 setItems(copy);
                 // 로딩중UI 숨기기~
@@ -66,11 +68,8 @@ function App() {
                 console.log('데이터를 가져오는데 실패했습니다.')
                 // 로딩중UI 숨기기~
               })
-
               // Promise.all([axios.get('url1'), axios.get('/url2')])
               // .then(()=>{})
-
-
             }}>더보기</button>
 
             <h2>최근 본 상품</h2>
