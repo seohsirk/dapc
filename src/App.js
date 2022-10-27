@@ -6,7 +6,7 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
-import Pagination from "./components/Pagination";
+// import Pagination from "./components/Pagination";
 import Item from './components/Item.js';
 
 const Detail = lazy(() => import('./pages/Detail.js'));
