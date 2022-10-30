@@ -4,7 +4,7 @@ import defaultImg from '../images/default-img.jpg';
 function Item(props) {
 
   let navigate = useNavigate();
-  let url = ('./detail/' + props.item.article_id).toString()
+  let url = ('./detail/' + props.item.article_id).toString();
 
   return (
     <div onClick={() => {
