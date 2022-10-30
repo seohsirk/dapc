@@ -75,16 +75,15 @@ function App() {
             <h2>최근 본 상품</h2>
             <div className="list">
               { 
-                watched ? watched.map( (id) => {
-                  let i = items.find((x) => {
-                    return x.article_id.toString() == id
+                watched ? watched.map((id) => {
+                  let i = items.filter((x) => {
+                    return x.article_id == id
                   });
+                  // 로컬스토리의 id를 받고
+                  // 받은 id를 items의 article_id와 같은 해당 item을 찾아서 반환한다
+                  // 반환받은 해당 item을 <Item/> 에 집어 넣는다
                   return (
-                    // 로컬스토리의 id를 받고
-                    // 받은 id를 items의 article_id와 같은 해당 item을 찾아서 반환한다
-                    // 반환받은 해당 item을 <Item/> 에 집어 넣는다
-                    
-                    <Item item={i}> </Item>
+                    <Item item={i[0]} key={i[0].article_id}> </Item>
                   )
                 }) : null
               }
