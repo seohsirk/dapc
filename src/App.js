@@ -5,7 +5,6 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-
 // import Pagination from "./components/Pagination";
 import Item from './components/Item.js';
 
@@ -17,6 +16,7 @@ function App() {
   let item = useSelector((state) => state.item)
   let [items, setItems] = useState(item);
   // let [items, setItems] = useState([]);
+
   let navigate = useNavigate();
   let watched = localStorage.getItem('watched')
   watched = JSON.parse(watched);
@@ -77,13 +77,14 @@ function App() {
               { 
                 watched ? watched.map( (id) => {
                   let i = items.find((x) => {
-                    return x.article_id == id
+                    return x.article_id.toString() == id
                   });
                   return (
                     // 로컬스토리의 id를 받고
                     // 받은 id를 items의 article_id와 같은 해당 item을 찾아서 반환한다
                     // 반환받은 해당 item을 <Item/> 에 집어 넣는다
-                    <Item item={i} key={i.article_id}> </Item>
+                    
+                    <Item item={i}> </Item>
                   )
                 }) : null
               }
