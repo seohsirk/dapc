@@ -44,6 +44,7 @@ function Detail(props) {
         <div className='price'>
           {item.price}
         </div>
+        <img></img>
         <div className='content'>
           {item.content}
         </div>
