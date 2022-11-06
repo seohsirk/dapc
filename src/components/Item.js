@@ -5,9 +5,8 @@ function Item(props) {
 
   let navigate = useNavigate();
   let url = ('./detail/' + props.item.article_id).toString();
-  let imgList = props.item.img_list.split("|");
-  console.log(imgList[0]);
-  let img = imgList ? imgList[0] : defaultImg;
+  // let imgList = props.item.img_list.split("|");
+  let img = props.item.img_main ? props.item.img_main : defaultImg;
   
   return (
     <div onClick={() => {
