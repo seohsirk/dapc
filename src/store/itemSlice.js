@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import data from '../data/data.js';
 
-
 let item = createSlice({
   name : 'item',
   initialState : data,
@@ -12,7 +11,5 @@ let item = createSlice({
   }
 });
 
-
 export let { increase } = item.actions;
-
 export default item;
